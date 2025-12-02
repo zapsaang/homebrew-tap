@@ -10,7 +10,7 @@ class Passgen < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/zapsaang/pass-gen/releases/download/v0.1.0/pass-gen_Darwin_x86_64.tar.gz"
-      sha256 "a75446fc6b1ec88f97d74ff022b4ea2b4a2caef91b694f631f991b60ad4326ea"
+      sha256 "d6482593c58daaa68b93ab09535dda4116707c9d9055da7dd0982ddb663c47de"
 
       def install
         bin.install "passgen"
@@ -18,7 +18,7 @@ class Passgen < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/zapsaang/pass-gen/releases/download/v0.1.0/pass-gen_Darwin_arm64.tar.gz"
-      sha256 "b8fb375ce4afca138670dfbaa8ce1d8f1d3b2b111f9a3764c98abedd4c540be3"
+      sha256 "c0fa2eb5b10e755cbe3aaab55c396a5c531bc7ac2104a0ffb553da73fba89a83"
 
       def install
         bin.install "passgen"
@@ -29,14 +29,14 @@ class Passgen < Formula
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/zapsaang/pass-gen/releases/download/v0.1.0/pass-gen_Linux_x86_64.tar.gz"
-      sha256 "22d9519cbc89d580044ebcc38fb6445d14149581fa92a97fd2107e1eda9c8048"
+      sha256 "4966f0a0e3638cca5b04b23a6c282c26410ab1c908afb153614764393d1d5229"
       def install
         bin.install "passgen"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/zapsaang/pass-gen/releases/download/v0.1.0/pass-gen_Linux_arm64.tar.gz"
-      sha256 "1d3b472b62cdb496ecd59f091234b83870eaae0f43e0cbc0cbf3e8584973fdd0"
+      sha256 "2139049524332d5c68c0ad9f90150c14abf3de2293bb14befbf0ccf7cff5ea4d"
       def install
         bin.install "passgen"
       end
