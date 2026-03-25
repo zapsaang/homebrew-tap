@@ -1,20 +1,20 @@
 class Aura < Formula
   desc "Nanosecond-level system telemetry probe"
   homepage "https://github.com/zapsaang/aura"
-  version "0.0.2"
+  version "0.0.3"
   license "MIT OR Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/zapsaang/aura/releases/download/v0.0.2/aura-v0.0.2-x86_64-apple-darwin.tar.xz"
-      sha256 "43843a53fcd0ecd3ad88ef70423b9175a1d52459325b0154e6970ee444c1a10c"
+      url "https://github.com/zapsaang/aura/releases/download/v0.0.3/aura-v0.0.3-x86_64-apple-darwin.tar.xz"
+      sha256 "8567f5645a0729802a5e8aca64135c61abf2ff9b2bb113b73fe705c86a103192"
       def install
         bin.install "aura-daemon", "aura-cli"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/zapsaang/aura/releases/download/v0.0.2/aura-v0.0.2-aarch64-apple-darwin.tar.xz"
-      sha256 "127adb3766a3b5abc844c7de3dd6b2fa45097095b054cc13e7bc942ff70c031b"
+      url "https://github.com/zapsaang/aura/releases/download/v0.0.3/aura-v0.0.3-aarch64-apple-darwin.tar.xz"
+      sha256 "81b73315e3d1ced41d51db6446ca92c7028beee3aed2893e0d2953e25a453444"
       def install
         bin.install "aura-daemon", "aura-cli"
       end
@@ -23,15 +23,15 @@ class Aura < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zapsaang/aura/releases/download/v0.0.2/aura-v0.0.2-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "ee70ee27ff608d85ef2f391ecab1bd898d810118ce2c6c0457c32facfc84b360"
+      url "https://github.com/zapsaang/aura/releases/download/v0.0.3/aura-v0.0.3-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "a0c8c9cfa85c9ca5bab4b6d69f47314163d246561bc24407a48a16ed9a183a3f"
       def install
         bin.install "aura-daemon", "aura-cli"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zapsaang/aura/releases/download/v0.0.2/aura-v0.0.2-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "ef1c224998c7660f9277f1538d2c7ea719ee3ba422e0d937a132776546b99d86"
+      url "https://github.com/zapsaang/aura/releases/download/v0.0.3/aura-v0.0.3-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "2dc47cfe10f64711d740ba4b2eae58d418fdec78b9f0334e64e0c7bf749d8648"
       def install
         bin.install "aura-daemon", "aura-cli"
       end
