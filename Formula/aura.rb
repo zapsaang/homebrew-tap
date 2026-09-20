@@ -1,70 +1,43 @@
 class Aura < Formula
   desc "Nanosecond-level system telemetry probe"
   homepage "https://github.com/zapsaang/aura"
-  version "0.0.16"
-  license "MIT OR Apache-2.0"
+  license any_of: ["MIT", "Apache-2.0"]
+  head "https://github.com/zapsaang/aura.git", branch: "main"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/zapsaang/aura/releases/download/v0.0.16/aura-v0.0.16-x86_64-apple-darwin.tar.xz"
-      sha256 "210f62c90e96407723b5a50e608b7c9b2fc7d12c89b44e97d04ae635bd569439"
-      def install
-        bin.install "aura-daemon", "aura-cli"
-      end
+    on_arm do
+      url "https://github.com/zapsaang/aura/releases/download/v1.0.0/aura-aarch64-apple-darwin.tar.gz"
+      sha256 "e0ea86c3b2429f7206365e35ce4926ba1b4b68810b1c0f7d05b772e08faf8215"
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/zapsaang/aura/releases/download/v0.0.16/aura-v0.0.16-aarch64-apple-darwin.tar.xz"
-      sha256 "40e965c946db3ff828e20378ae58e1d6c5b23426b9dc4328b3cd7ef8604f081c"
-      def install
-        bin.install "aura-daemon", "aura-cli"
-      end
+    on_intel do
+      url "https://github.com/zapsaang/aura/releases/download/v1.0.0/aura-x86_64-apple-darwin.tar.gz"
+      sha256 "55b8c76609cd6e4fb86abaf17f317591b729d9864d4ec4d0889ab7c778f9d49f"
     end
   end
 
   on_linux do
-    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zapsaang/aura/releases/download/v0.0.16/aura-v0.0.16-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "c75b0066819e09eddf213c8e3aeaab5881adf91d9658dc21ccbc121e4e3f92a6"
-      def install
-        bin.install "aura-daemon", "aura-cli"
-      end
+    on_arm do
+      url "https://github.com/zapsaang/aura/releases/download/v1.0.0/aura-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "e348d75e19a5e2303e1bfd3fa3cb8778cbb0c500b720792272f0a612542dbd00"
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zapsaang/aura/releases/download/v0.0.16/aura-v0.0.16-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "056cf743742d95e0d3c545ce374d75453b9cea4eb93bc3af225850798547516d"
-      def install
-        bin.install "aura-daemon", "aura-cli"
-      end
+    on_intel do
+      url "https://github.com/zapsaang/aura/releases/download/v1.0.0/aura-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "ce83ece8afd77ac17f3f763e85ab189960bfc6efe2dc10fbfc1e65baf3ab3167"
     end
+  end
+
+  def install
+    bin.install "aura-daemon", "aura-cli"
   end
 
   service do
-    run opt_bin/"aura-daemon"
-    working_dir HOMEBREW_PREFIX
-    keep_alive
-    error_log_path var/"log/aura/error.log"
-  end
-
-  def caveats
-    <<~EOS
-      AURA telemetry daemon is now registered as a service.
-
-      To start the service:
-        brew services start aura
-
-      To check service status:
-        brew services info aura
-
-      To stop the service:
-        brew services stop aura
-
-      Or run manually:
-        aura-daemon &
-        aura-cli -m cpu
-    EOS
+    run [opt_bin/"aura-daemon", "--heartbeat-ms", "500"]
+    keep_alive true
+    log_path var/"log/aura/aura-daemon.log"
+    error_log_path var/"log/aura/aura-daemon.log"
   end
 
   test do
-    assert_match "aura", shell_output("#{bin}/aura-cli --version")
+    assert_equal "[AURA: OFFLINE]\n", shell_output("#{bin}/aura-cli -m cpu", 1)
   end
 end
