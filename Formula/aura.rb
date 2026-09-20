@@ -6,23 +6,23 @@ class Aura < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/zapsaang/aura/releases/download/v1.0.0/aura-aarch64-apple-darwin.tar.gz"
-      sha256 "e0ea86c3b2429f7206365e35ce4926ba1b4b68810b1c0f7d05b772e08faf8215"
+      url "https://github.com/zapsaang/aura/releases/download/v1.0.1/aura-aarch64-apple-darwin.tar.gz"
+      sha256 "df21785c2175542e80acde388ef82179cb4c0e286ce5b705110c52dd71345176"
     end
     on_intel do
-      url "https://github.com/zapsaang/aura/releases/download/v1.0.0/aura-x86_64-apple-darwin.tar.gz"
-      sha256 "55b8c76609cd6e4fb86abaf17f317591b729d9864d4ec4d0889ab7c778f9d49f"
+      url "https://github.com/zapsaang/aura/releases/download/v1.0.1/aura-x86_64-apple-darwin.tar.gz"
+      sha256 "759ff3f86468280d1e9575d1a80c331a34e8bdd005304d75efe0772fcf3d2a24"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/zapsaang/aura/releases/download/v1.0.0/aura-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "e348d75e19a5e2303e1bfd3fa3cb8778cbb0c500b720792272f0a612542dbd00"
+      url "https://github.com/zapsaang/aura/releases/download/v1.0.1/aura-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "409bc54e61f08defeb37a8c90822408b2951892cbbffb9ab78e63b3d360e5e7b"
     end
     on_intel do
-      url "https://github.com/zapsaang/aura/releases/download/v1.0.0/aura-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "ce83ece8afd77ac17f3f763e85ab189960bfc6efe2dc10fbfc1e65baf3ab3167"
+      url "https://github.com/zapsaang/aura/releases/download/v1.0.1/aura-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "25f878c5c36f826728833e15fcf3d0507acfd18d4a84ded6bb758d8d0624395e"
     end
   end
 
